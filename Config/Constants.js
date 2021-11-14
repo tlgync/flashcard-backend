@@ -1,4 +1,8 @@
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 const constant = {
-    secretKey : "ZTzmMzxE8Ub4acZ8"
-}
+  secretKey: process.env.SECRET_KEY,
+};
 export default constant;

@@ -1,5 +1,6 @@
-import { Joi } from "express-validation";
-import joi from "joi";
+/* eslint-disable no-unused-vars */
+import { Joi } from 'express-validation';
+import joi from 'joi';
 
 const Dto = {
   UserDto: {
@@ -14,6 +15,8 @@ const Dto = {
         email: joi.string().required().email(),
         password: joi.string().required(),
         repassword: joi.string().required(),
+        name: joi.string().required(),
+        surname: joi.string().required(),
       }),
     },
     ForgotPassword: {

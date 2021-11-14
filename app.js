@@ -1,31 +1,33 @@
-import express from "express";
-import { ValidationError } from "express-validation";
-import cors from "cors";
-import DB from "./DataContext/connection.js";
-import bodyParser from 'body-parser'
-import UserController from "./Controllers/UserController/index.js";
+/* eslint-disable consistent-return */
+import express from 'express';
+import { ValidationError } from 'express-validation';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import DB from './DbContext/connection.js';
+import UserController from './Controllers/UserController/index.js';
+
+dotenv.config();
 
 DB.connect();
 const app = express();
 app.use(express.json());
 
 app.use(cors());
-const deployPort = process.env.port;
+const deployPort = process.env.PORT;
 
-app.use("/user", UserController);
+app.use('/user', UserController);
 
-service.use((err, req, res, next) => {
+app.use((err, req, res, next) => {
   if (err instanceof ValidationError) {
     return res.status(err.statusCode).json();
   }
   next();
 });
 
-service.listen(deployPort, (err) => {
+app.listen(deployPort, err => {
   if (err) {
-    console.log("err thrown", err.stack);
+    console.log('err thrown', err.stack);
     return err;
   }
-  console.log("Server online");
+  console.log('Server online');
 });
-
